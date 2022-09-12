@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BaseContext>(opt =>
               opt.UseSqlServer(builder.Configuration.GetConnectionString("connection"),
-              b => b.MigrationsAssembly("Estudiante.Api")));
+                b => b.MigrationsAssembly("Estudiante.Api")));
 
 builder.Services.AddTransient<IEstudianteService, EstudianteService>();
 builder.Services.AddTransient<ICalificacionesService, CalificacionesServices>();
@@ -28,7 +28,8 @@ var config = new MapperConfiguration(cf =>
 
 var mapper = config.CreateMapper();
 
-builder.Services.AddSingleton(mapper);
+builder.Services.AddSingleton(mapper)
+;
 
 builder.Services.AddControllers();
 
