@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BaseContext>(opt =>
               opt.UseSqlServer(builder.Configuration.GetConnectionString("connection"),
-              b => b.MigrationsAssembly("Estudiante_Api")));
+              b => b.MigrationsAssembly("Estudiante.Api")));
 
 builder.Services.AddTransient<IEstudianteService, EstudianteService>();
 builder.Services.AddTransient<ICalificacionesService, CalificacionesServices>();
@@ -21,7 +21,7 @@ builder.Services.AddTransient<IGradoService, GradoServices>();
 
 var config = new MapperConfiguration(cf =>
 {
-    var asamble = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "Estudiante_Business");
+    var asamble = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(x => x.GetName().Name == "Estudiante.Business");
     cf.AddMaps(asamble);
     cf.AllowNullCollections = true;
 });
